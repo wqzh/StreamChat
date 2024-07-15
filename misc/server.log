@@ -1,0 +1,70 @@
+xxx@ubuntu:/data1/wqzh/StreamChat/StreamChat$ CUDA_VISIBLE_DEVICES=2 python \
+>     src/funasr_wss_server.py \
+>     --port 10122 \
+>     --asr_model /data1/wqzh/HF-Models/FunASR-Chat/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch \
+>     --asr_model_online /data1/wqzh/HF-Models/FunASR-Chat/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-online \
+>     --punc_model /data1/wqzh/HF-Models/FunASR-Chat/punc_ct-transformer_zh-cn-common-vocab272727-pytorch \
+>     --vad_model /data1/wqzh/HF-Models/FunASR-Chat/speech_fsmn_vad_zh-cn-16k-common-pytorch 
+If you want use mossformer, lease install rotary_embedding_torch by: 
+ pip install -U rotary_embedding_torch
+If you want use mossformer, lease install rotary_embedding_torch by: 
+ pip install -U rotary_embedding_torch
+If you want use mossformer, lease install rotary_embedding_torch by: 
+ pip install -U rotary_embedding_torch
+If you want use mossformer, lease install rotary_embedding_torch by: 
+ pip install -U rotary_embedding_torch
+Namespace(host='0.0.0.0', port=10122, text_port=10095, audio_port=10096, asr_model='/data1/wqzh/HF-Models/FunASR-Chat/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch', asr_model_revision='v2.0.4', asr_model_online='/data1/wqzh/HF-Models/FunASR-Chat/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-online', asr_model_online_revision='v2.0.4', vad_model='/data1/wqzh/HF-Models/FunASR-Chat/speech_fsmn_vad_zh-cn-16k-common-pytorch', vad_model_revision='v2.0.4', punc_model='/data1/wqzh/HF-Models/FunASR-Chat/punc_ct-transformer_zh-cn-common-vocab272727-pytorch', punc_model_revision='v2.0.4', ngpu=1, device='cuda', ncpu=4, certfile='', keyfile='')
+model loading
+ckpt: /data1/wqzh/HF-Models/FunASR-Chat/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch/model.pt
+ckpt: /data1/wqzh/HF-Models/FunASR-Chat/speech_fsmn_vad_zh-cn-16k-common-pytorch/model.pt
+ckpt: /data1/wqzh/HF-Models/FunASR-Chat/punc_ct-transformer_zh-cn-common-vocab272727-pytorch/model.pt
+model loaded! Multi-clients are supported at the same time now!!!!
+=======> [OK]: handler Client connected
+---> client_handler： 139835414717360
+=======> Received meg: [str]
+-----> Received meg: [found `chunk_size` in meg]
+---> `load_config` websocket id is:  139835414717360
+-----> speech_start_i, speech_end_i: 2040 -1
+-----> speech_start_i, speech_end_i: -1 2890
+====> speech_end_i 2890 current_time 3479
+===========> idle timeout transcribe!
+----> async asr:  2.36
+###############---->: 测试测试测试。 3479 4319 840
+----> llm_and_tts [prompt] 测试测试测试。
+----> [util/create_chat_completion] LLM_model_name_xxxx   LLM_model_url_xxxx   
+---> server `send_text_to_client`: text_client_websocket is None False
+---> send [text] done! 【哟，小伙伴，这么晚还在等我呢？快坐下来，一起吃点东西吧！】
+LLM: 生成： 0.77 s  | 传输： 0.0 s
+http://10.101.10.12:8768/ tianmeishaonv 哟，小伙伴，这么晚还在等我呢？快坐下来，一起吃点东西吧！
+<Response [200]>
+request_tts : 0.5559320449829102
+---> send [audio] done!
+TTS: 生成： 0.56 s  | 传输： 0.17 s
+=====> [ llm_and_tts] :  1.5
+===> llm_and_tts done
+=======> Received meg: [str]
+-----> Received meg: [found `audio_playing` in meg]:  1
+=======> Received meg: [str]
+-----> Received meg: [found `audio_playing` in meg]:  0
+-----> speech_start_i, speech_end_i: 35870 -1
+-----> speech_start_i, speech_end_i: -1 36460
+====> speech_end_i 36460 current_time 41399
+===========> idle timeout transcribe!
+----> async asr:  0.08
+###############---->: 测试测试测。 41399 42239 840
+----> llm_and_tts [prompt] 测试测试测。
+----> [util/create_chat_completion] LLM_model_name_xxxx   LLM_model_url_xxxx   
+---> server `send_text_to_client`: text_client_websocket is None False
+---> send [text] done! 【哟，来测什么的？快告诉我，我要用我的相机好好记录下来！】
+LLM: 生成： 0.45 s  | 传输： 0.0 s
+http://10.101.10.12:8768/ tianmeishaonv 哟，来测什么的？快告诉我，我要用我的相机好好记录下来！
+<Response [200]>
+request_tts : 0.5670123100280762
+---> send [audio] done!
+TTS: 生成： 0.57 s  | 传输： 0.04 s
+=====> [ llm_and_tts] :  1.05
+===> llm_and_tts done
+=======> Received meg: [str]
+-----> Received meg: [found `audio_playing` in meg]:  1
+=======> Received meg: [str]
+-----> Received meg: [found `audio_playing` in meg]:  0
